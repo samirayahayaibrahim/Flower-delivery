@@ -27,7 +27,7 @@ const getFlower = async (req, res) => {
 
 //create new flower & connected to db
 const createFlower = async (req, res) => {
-    const {name, image, description, price, category} = req.body
+    const {name, description, price, category} = req.body
     
     try{
         const flower = await Flower.create({name, description, price, category})
