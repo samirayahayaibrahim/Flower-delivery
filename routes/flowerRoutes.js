@@ -1,4 +1,6 @@
 const express = require('express')
+const upload = require('../config/multerConfig');
+// const image = require('.../uploads/Image');
 const {
     createFlower,
     getFlower,
@@ -9,6 +11,7 @@ const {
 
 
 const router = express.Router()
+
 
 
 router.get('/', getFlowers)

@@ -27,10 +27,10 @@ const getFlower = async (req, res) => {
 
 //create new flower & connected to db
 const createFlower = async (req, res) => {
-    const {name, description, price, category} = req.body
+    const {name, image, description, price, category} = req.body
     
     try{
-        const flower = await Flower.create({name, description, price, category})
+        const flower = await Flower.create({name, image, description, price, category})
         res.status(200).json(flower)
     } catch (error) {
         res.status(400).json({error: error.message})
