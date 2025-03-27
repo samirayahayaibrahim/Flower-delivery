@@ -1,6 +1,6 @@
 const express = require('express')
 const upload = require('../config/multerConfig');
-// const image = require('.../uploads/Image');
+// const multerConfig = require('../uploads');
 const {
     createFlower,
     getFlower,
@@ -18,11 +18,11 @@ router.get('/', getFlowers)
 
 router.get('/:id', getFlower)
 
-router.post('/', createFlower)
+router.post('/', upload.single("image"), createFlower)
 
 router.delete('/:id', deleteFlower)
 
-router.patch('/:id', updateFlower)
+router.patch('/:id', upload.single("image"), updateFlower)
 
 
 module.exports = router
