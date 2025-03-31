@@ -42,7 +42,19 @@ Multer         #image uploads
 
 ##feature
 
+**Product Management**
+Add, update, delete flower products
+Store product images in the uploads folder using Multer
+Fetch product details with categories & prices
 
+**Image Uploads**
+Upload flower images with Multer
+Store files in the uploads/ directory
+Serve images via API
+
+**API with Express & MongoDB**
+RESTful API with Express.js
+MongoDB integration via Mongoose
 
 ##setup instruction##
 
