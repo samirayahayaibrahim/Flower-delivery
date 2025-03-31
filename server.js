@@ -4,10 +4,11 @@ const express = require('express')
 const mongoose = require('mongoose')
 const cors = require("cors");
 const flowerRoutes = require("./routes/flowerRoutes")
+const userRoutes = require("./routes/userRoutes")
 
 const app = express()
 
-const BACKEND_URL = process.env.BACKEND_URL || "http://localhost:5000";
+const BACKEND_URL = process.env.BACKEND_URL || "http://localhost:4000";
 
 //middleware
 app.use(cors());
@@ -19,14 +20,16 @@ app.use((req, res, next)=>{
     next()
 })
 
+//routes
 app.use('/api/flowerRoutes', flowerRoutes)
+app.use('/api/user', userRoutes)
 
 //connect to mangoDB
 mongoose.connect(process.env.MONGO_URI)
     .then(() => {
         
 app.listen(process.env.PORT, () =>{
-    console.log('connected to DB & listening on port', process.env.PORT || 5000)
+    console.log('connected to DB & listening on port', process.env.PORT || 4000)
 })
     })
     .catch((error) => {
