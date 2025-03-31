@@ -19,11 +19,9 @@
 
 7.[setup and installation]
 
-8.[usage]
+8.[license]
 
-9.[license]
-
-10.[author(s)]
+9.[author(s)]
 
 ##Overview
 
