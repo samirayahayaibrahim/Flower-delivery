@@ -1,6 +1,6 @@
 # Flower-delivery
 
-**Description**This is the backend for the Flower Delivery application, built using Node.js, Express.js, and MongoDB. It handles file uploads, and API endpoints for the frontend.
+**Description**This is the backend for the Flower Delivery application, built using Node.js, Express.js, and MongoDB. It handles authentication,file uploads, and API endpoints for the frontend.
 
 
 ##Table of contents                        
@@ -45,6 +45,11 @@ Add, update, delete flower products
 Store product images in the uploads folder using Multer
 Fetch product details with categories & prices
 
+**User Authentication***
+Secure JWT-based authentication (Register/Login)
+Password hashing with bcrypt
+Role-based access control (Admin & User)
+
 **Image Uploads**
 Upload flower images with Multer
 Store files in the uploads/ directory
@@ -73,6 +78,7 @@ Contains Mongoose schemas for database collections
 2. Routes (routes/ folder)
 
 Defines API endpoints
+Handles authentication & user operations,Handles flowers & product listings
 
 3. Controllers (controllers/ folder)
 
