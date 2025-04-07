@@ -58,8 +58,8 @@ userSchema.statics.signup = async function( name, email, password) {
 }
 
 //static login
-userSchema.statics.login = async function(email, password, name){
-    if (!email || !password || !name) {
+userSchema.statics.login = async function(name, email, password){
+    if (!name || !email || !password) {
         throw Error('all space must be filled')
     }
 

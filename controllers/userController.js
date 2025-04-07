@@ -22,7 +22,6 @@ const loginUser = async (req, res) => {
 
     }
 
-    
 }
 
 //signup-user
