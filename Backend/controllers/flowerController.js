@@ -1,4 +1,4 @@
-const Flower = require("../models/flowerModel")
+const Flower = require("../../models/flowerModel")
 const mongoose = require('mongoose')
 
 //all flower
