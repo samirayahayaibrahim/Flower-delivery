@@ -9,35 +9,57 @@ if (!fs.existsSync(uploadPath)) {
     fs.mkdirSync(uploadPath, { recursive: true });
 }
 
-// Multer storage configuration
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        console.log("Saving file to:", uploadPath);
-        cb(null, uploadPath);
-    },
-    filename: (req, file, cb) => {
-    const uniqueFilename = Date.now() + path.extname(file.originalname);
-    console.log("Generated Filename:", uniqueFilename);
-    cb(null, uniqueFilename);
-    },
-});
+// const storage = multer.diskStorage({
+//     destination: function (req, file, cb) {
+//         console.log("Saving file to:, uploads/");
+//         cb(null, path.join(__dirname, "uploads"));
+//     },
 
-// File filter
-const fileFilter = (req, file, cb) => {
-    console.log("File Type Received:", file ? file.mimetype : "No file detected");
-    if (file && file.mimetype.startsWith("image/")) {
-        cb(null, true);
-    } else {
-        console.error("Invalid File Type: Only image files are allowed");
-        cb(new Error("Only image files are allowed"), false);
-    }
-};
+
+    
+//   filename: function (req, file, cb) {
+    
+//     const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9);
+//     const ext = path.extname(file.originalname); // e.g. '.jpeg', '.png'
+//     cb(null, uniqueSuffix + ext);
+//   },
+// });
+
+// // Filter for images only
+// const fileFilter = (req, file, cb) => {
+//     const allowedMimeTypes = ['image/jpeg', 'image/png', 'image/jpg', 'image/webp'];
+//     if (allowedMimeTypes.includes(file.mimetype)) {
+//         cb(null, true);
+//     } else {
+//         cb(new Error('Invalid file type. Only images are allowed.'), false);
+//     }
+// };
 
 // Multer upload config
-const upload = multer({
-    storage: storage,
-    fileFilter: fileFilter,
-  limits: { fileSize: 10 * 1024 * 1024 }, // 10MB limit
+// const upload = multer({
+//     storage: storage,
+//     fileFilter: fileFilter,
+//   limits: { fileSize: 10 * 1024 * 1024 }, // 10MB limit
+// });
+
+// module.exports = upload;
+
+const multer = require('multer');
+const path = require('path');
+const crypto = require('crypto');
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, path.join(__dirname, 'uploads'));
+  },
+  filename: function (req, file, cb) {
+    const ext = path.extname(file.originalname).toLowerCase(); // e.g. '.png'
+    const uniqueName = crypto.randomBytes(16).toString('hex') + ext;
+    cb(null, uniqueName);
+  }
 });
 
+const upload = multer({ storage });
+
 module.exports = upload;
+

@@ -5,28 +5,28 @@ const Schema = mongoose.Schema
 const flowerSchema = new Schema({
     name: {
         type: String,
-        require: true
+        required: true
     },
 
     image: {
         type: String,
-        require: true
+        required: true
     },
     
     description: {
         type: String,
-        require: true
+        required: true
     },
     price: {
         type: Number,
-        require: true
+        required: true
     },
     category: {
         type: String,
-        require: true
+        required: true
     }
 
 }, { timestamps: true})
 
-module.exports = mongoose.model('flower', flowerSchema)
+module.exports = mongoose.model('Flower', flowerSchema)
 
