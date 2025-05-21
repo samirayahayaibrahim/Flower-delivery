@@ -1,6 +1,5 @@
-const express = require('express')
-const upload = require('../config/multerConfig');
-// const multerConfig = require('../uploads');
+const express = require('express');
+// const upload = require('../config/Cloudinary');
 const {
     createFlower,
     getFlower,
@@ -9,7 +8,7 @@ const {
     updateFlower
 } = require('../controllers/flowerController')
 
-
+const upload = require('multer')({ dest: 'uploads/' });
 const router = express.Router()
 
 
@@ -17,7 +16,10 @@ router.get('/', getFlowers)
 
 router.get('/:id', getFlower)
 
+// router.post('/', createFlower).
+
 router.post('/', upload.single("image"), createFlower)
+
 
 router.delete('/:id', deleteFlower)
 
